@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Layout from "../hoc/Layout";
+import Title from "./Title/Title";
 
 const StyledApp = styled.div`
   text-align: center;
@@ -10,7 +11,9 @@ const StyledApp = styled.div`
 function App() {
   return (
     <StyledApp>
-      <Layout></Layout>
+      <Layout>
+        <Title />
+      </Layout>
     </StyledApp>
   );
 }
