@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap-reboot.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./index.css";
 
-import App from "./components/App/App";
+import App from "./components/App";
 
 import reportWebVitals from "./reportWebVitals";
 
