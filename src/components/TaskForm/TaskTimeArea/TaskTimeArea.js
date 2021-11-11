@@ -1,69 +1,29 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../../redux/actions/taskTimeArea";
+import { timeTick, setCurrentTime } from "../../../redux/actions/taskTimeArea";
 
-function TimeInput({
-  hours,
-  minutes,
-  seconds,
-  userHours,
-  userMinutes,
-  userSeconds,
-  timeTick,
-  setUserTime,
-  setCurrentTime,
-}) {
+import TaskTimeInput from "./TaskTimeInput/TaskTimeInput";
+
+function TaskTimeArea({ timeTick, setCurrentTime }) {
   useEffect(() => {
     const startTimeTick = () => {
-      timeTick({ hours, minutes, seconds });
-      setTimeout(() => {
-        startTimeTick();
-      }, 1000);
+      timeTick();
+      setTimeout(() => startTimeTick(), 1000);
     };
-    setTimeout(() => {
-      startTimeTick();
-    }, 1000);
-    return startTimeTick;
+
+    setTimeout(() => startTimeTick(), 1000);
+
+    return () => {
+      timeTick();
+    };
   }, []);
 
-  const numWithZero = (value) => {
-    if (value < 10) {
-      return "0" + value;
-    }
-    return value;
-  };
-
-  const inputsArr = [
-    {
-      key: "hours",
-      value: userHours ? userHours : hours,
-    },
-    {
-      key: "minutes",
-      value: userMinutes ? userMinutes : minutes,
-    },
-    {
-      key: "seconds",
-      value: userSeconds ? userSeconds : seconds,
-    },
-  ];
+  const inputsKeys = ["hours", "minutes", "seconds"];
 
   return (
     <div class="input-group mb-3 justify-content-between">
-      {inputsArr.map(({ key, value }) => {
-        return (
-          <div class="form-floating col-sm-3">
-            <input
-              value={numWithZero(value)}
-              type="text"
-              class="form-control"
-              placeholder="Set time"
-              aria-label="Time"
-              onChange={(e) => setUserTime(key, e.target.value)}
-            />
-            <label for="floatingInput">Please write your task title</label>
-          </div>
-        );
+      {inputsKeys.map((itemName) => {
+        return <TaskTimeInput key={itemName} itemName={itemName} />;
       })}
       <button
         type="button"
@@ -76,8 +36,9 @@ function TimeInput({
   );
 }
 
-const mapStateToProps = (state) => {
-  return state.taskTimeArea;
+const mapDispatchToProps = {
+  timeTick: timeTick,
+  setCurrentTime: setCurrentTime,
 };
 
-export default connect(mapStateToProps, actions)(TimeInput);
+export default connect(null, mapDispatchToProps)(TaskTimeArea);

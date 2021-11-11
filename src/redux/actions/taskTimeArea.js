@@ -14,10 +14,10 @@ export const timeTick = () => {
   };
 };
 
-export const setUserTime = (inputKey, value) => {
+export const setUserTime = (itemName, value) => {
   return {
     type: "SET_USER_TIME",
-    key: "user" + inputKey[0].toUpperCase() + inputKey.slice(1),
+    valueName: itemName,
     value: value,
   };
 };
@@ -28,12 +28,12 @@ export const setCurrentTime = () => {
   return {
     type: "SET_CURRENT_TIME",
     resetAll: {
-      hours: currentTime.getHours(),
-      minutes: currentTime.getMinutes(),
-      seconds: currentTime.getSeconds(),
-      userHours: null,
-      userMinutes: null,
-      userSeconds: null,
+      autoTime: {
+        hours: currentTime.getHours(),
+        minutes: currentTime.getMinutes(),
+        seconds: currentTime.getSeconds(),
+      },
+      userTime: { userHours: null, userMinutes: null, userSeconds: null },
     },
   };
 };
