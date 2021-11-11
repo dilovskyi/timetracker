@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Layout from "../hoc/Layout";
 import Title from "./Title/Title";
 import TaskForm from "./TaskForm/TaskForm";
+import TaskList from "./TaskList/TaskList";
 
 const StyledApp = styled.div`
   text-align: center;
@@ -15,6 +16,7 @@ function App() {
       <Layout>
         <Title />
         <TaskForm />
+        <TaskList />
       </Layout>
     </StyledApp>
   );

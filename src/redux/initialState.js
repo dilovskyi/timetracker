@@ -18,3 +18,5 @@ export const taskTimeAreaInitialState = {
     seconds: null,
   },
 };
+
+export const taskListInitialState = [];
