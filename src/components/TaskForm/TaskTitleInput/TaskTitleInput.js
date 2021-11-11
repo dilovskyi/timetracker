@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../redux/actions/taskTitleInput";
 
@@ -6,6 +6,7 @@ function TaskTitleInput({ value, setTaskTitle, resetTaskTitle }) {
   return (
     <div class="input-group mb-3">
       <input
+        autoFocus
         value={value}
         type="text"
         class="form-control"
