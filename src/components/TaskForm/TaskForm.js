@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TaskTitleInput from "./TaskTitleInput/TaskTitleInput";
 import TaskTimeInput from "./TaskTimeInput/TaskTimeInput";
 import { connect } from "react-redux";
-import { addTask } from "../../redux/actions/taskActions";
+import { addTask } from "../../redux/actions/taskList";
 const StyledEventForm = styled.div``;
 
 function TaskForm({ addTask, taskTitle, time }) {
