@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TaskItem from "./TaskItem/TaskItem";
 import { connect } from "react-redux";
-import * as actions from "../../redux/actions/taskActions";
+import { setListDataFromStorage } from "../../redux/actions/taskActions";
 
 import styled from "styled-components";
 
@@ -14,7 +14,20 @@ const StyledAlert = styled.div`
   margin-bottom: 7px;
 `;
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, setListDataFromStorage }) {
+  useEffect(() => {
+    let storageList = JSON.parse(localStorage.getItem("tasks"));
+    if (storageList && storageList.length) {
+      console.log(1);
+      setListDataFromStorage(storageList);
+    }
+  }, []);
+
+  //FIXME: Set in storage beforeComponentUnmount
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
   return (
     <>
       <StyledTaskList className="list-group ">
@@ -38,4 +51,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(TaskList);
+const mapDispatchToProps = {
+  setListDataFromStorage,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

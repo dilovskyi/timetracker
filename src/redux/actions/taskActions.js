@@ -11,3 +11,10 @@ export const addTask = (title, autoTime, userTime) => {
     },
   };
 };
+
+export const setListDataFromStorage = (storageList) => {
+  return {
+    type: "SET_DATA_FROM_STORAGE",
+    storageList,
+  };
+};
