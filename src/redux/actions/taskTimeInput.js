@@ -15,8 +15,14 @@ export const timeTick = () => {
 };
 
 export const setUserTime = (itemName, value) => {
+  const [hours, minutes, seconds] = value.split(":");
   return {
     type: "SET_USER_TIME",
+    newTime: {
+      hours,
+      minutes,
+      seconds,
+    },
     valueName: itemName,
     value: value,
   };
@@ -24,16 +30,14 @@ export const setUserTime = (itemName, value) => {
 
 export const setCurrentTime = () => {
   let currentTime = new Date();
+  console.log(currentTime);
 
   return {
     type: "SET_CURRENT_TIME",
-    resetAll: {
-      autoTime: {
-        hours: currentTime.getHours(),
-        minutes: currentTime.getMinutes(),
-        seconds: currentTime.getSeconds(),
-      },
-      userTime: { userHours: null, userMinutes: null, userSeconds: null },
+    currentTime: {
+      hours: currentTime.getHours(),
+      minutes: currentTime.getMinutes(),
+      seconds: currentTime.getSeconds(),
     },
   };
 };

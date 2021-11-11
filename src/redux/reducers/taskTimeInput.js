@@ -5,22 +5,17 @@ const taskTimeAreaReducer = (state = taskTimeAreaInitialState, action) => {
     case "TIME_TICK":
       return {
         ...state,
-        autoTime: action.newTime,
+        ...action.newTime,
       };
     case "SET_USER_TIME":
-      const userTime = {
-        ...state.userTime,
-        [action.valueName]: action.value,
-      };
       return {
         ...state,
-        userTime,
+        ...action.newTime,
       };
     case "SET_CURRENT_TIME":
-      console.log(action);
       return {
         ...state,
-        ...action.resetAll,
+        ...action.currentTime,
       };
     default:
       return state;

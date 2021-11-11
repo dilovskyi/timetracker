@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import taskTitleInput from "./taskTitleInput";
-import taskTimeArea from "./taskTimeArea";
+import taskTimeInput from "./taskTimeInput";
 import taskReducer from "./taskReducer";
 
 const rootReducer = combineReducers({
   taskTitleInput,
-  taskTimeArea,
+  taskTimeInput,
   tasks: taskReducer,
 });
 

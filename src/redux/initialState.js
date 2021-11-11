@@ -7,16 +7,9 @@ let hours = currentTime.getHours();
 let minutes = currentTime.getMinutes();
 let seconds = currentTime.getSeconds();
 export const taskTimeAreaInitialState = {
-  autoTime: {
-    hours,
-    minutes,
-    seconds,
-  },
-  userTime: {
-    hours: null,
-    minutes: null,
-    seconds: null,
-  },
+  hours,
+  minutes,
+  seconds,
 };
 
 export const taskListInitialState = [];
