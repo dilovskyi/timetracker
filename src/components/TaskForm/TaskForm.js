@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import TaskTitleInput from "./TaskTitleInput/TaskTitleInput";
 import TaskTimeArea from "./TaskTimeArea/TaskTimeArea";
@@ -17,7 +17,16 @@ function TaskForm({ addTask, taskTitle, autoTime, userTime }) {
           <button
             class="btn btn-lg btn-primary"
             type="button"
-            onClick={() => addTask(taskTitle, autoTime, userTime)}
+            onClick={(e) => {
+              if (e.type === "click") {
+                addTask(taskTitle, autoTime, userTime);
+              }
+            }}
+            onKeyPress={(e) => {
+              if (e.code === "Enter") {
+                addTask(taskTitle, autoTime, userTime);
+              }
+            }}
           >
             Create task
           </button>
