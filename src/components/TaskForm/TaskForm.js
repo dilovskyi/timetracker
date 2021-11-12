@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 
 import { connect } from "react-redux";
 import { addTask } from "../../redux/actions/taskList";
+import { resetTaskTitle } from "../../redux/actions/taskTitleInput";
 
 import TaskTitleInput from "./TaskTitleInput/TaskTitleInput";
 import TaskTimeInput from "./TaskTimeInput/TaskTimeInput";
 
-function TaskForm({ addTask, taskTitle, time }) {
+function TaskForm({ addTask, taskTitle, time, resetTaskTitle }) {
   const titleInput = useRef(null);
   const timeInput = useRef(null);
   const createButton = useRef(null);
@@ -42,12 +43,14 @@ function TaskForm({ addTask, taskTitle, time }) {
             type="button"
             onClick={(e) => {
               e.preventDefault();
+              resetTaskTitle();
               if (e.type === "click") {
                 addTask(taskTitle, time);
               }
             }}
             onKeyPress={(e) => {
               e.preventDefault();
+              resetTaskTitle();
               if (e.code === "Enter") {
                 addTask(taskTitle, time);
               }
@@ -68,6 +71,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { addTask };
+const mapDispatchToProps = { addTask, resetTaskTitle };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
