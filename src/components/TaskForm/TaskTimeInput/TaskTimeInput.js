@@ -10,6 +10,7 @@ function TaskTimeInput({
   timeTick,
   setUserTime,
   setCurrentTime,
+  timeRef,
 }) {
   const [inputFocusStatus, setInputFocusStatus] = useState(false);
   const [valueChangedStatus, setValueChangedStatus] = useState(false);
@@ -28,13 +29,14 @@ function TaskTimeInput({
   }, []);
 
   return (
-    <div class="input-group mb-3 col-sm-6 input-group-lg">
+    <>
       <input
+        ref={timeRef}
         onFocus={() => setInputFocusStatus(true)}
         onBlur={() => setInputFocusStatus(false)}
         value={hours + ":" + minutes + ":" + seconds}
         type="text"
-        class="form-control"
+        className="form-control"
         placeholder="Set time"
         aria-label="Time"
         onChange={(e) => {
@@ -44,7 +46,7 @@ function TaskTimeInput({
       />
 
       <button
-        class="btn btn-primary"
+        className="btn btn-primary"
         type="button"
         onClick={() => {
           setCurrentTime();
@@ -53,7 +55,7 @@ function TaskTimeInput({
       >
         Reset to current
       </button>
-    </div>
+    </>
   );
 }
 

@@ -1,21 +1,44 @@
-import React from "react";
-import styled from "styled-components";
-import TaskTitleInput from "./TaskTitleInput/TaskTitleInput";
-import TaskTimeInput from "./TaskTimeInput/TaskTimeInput";
+import React, { useRef } from "react";
+
 import { connect } from "react-redux";
 import { addTask } from "../../redux/actions/taskList";
-const StyledEventForm = styled.div``;
+
+import TaskTitleInput from "./TaskTitleInput/TaskTitleInput";
+import TaskTimeInput from "./TaskTimeInput/TaskTimeInput";
 
 function TaskForm({ addTask, taskTitle, time }) {
+  const titleInput = useRef(null);
+  const timeInput = useRef(null);
+  const createButton = useRef(null);
+
+  const pressedInput = (e) => {
+    if (e.target === titleInput.current && e.charCode === 13) {
+      timeInput.current.focus();
+    } else if (e.target === timeInput.current && e.charCode === 13) {
+      createButton.current.focus();
+    }
+  };
+
   return (
-    <div className="container">
-      <TaskTitleInput />
-      <TaskTimeInput />
+    <form className="row g-3 needs-validation" onKeyPress={pressedInput}>
+      <div className="row">
+        <div className="col-12 col-lg-6">
+          <div className="input-group mb-3 input-group-lg">
+            <TaskTitleInput titleRef={titleInput} />
+          </div>
+        </div>
+        <div className="col-12 col-lg-6 ">
+          <div className="input-group mb-3 input-group-lg">
+            <TaskTimeInput timeRef={timeInput} />
+          </div>
+        </div>
+      </div>
 
       <div className="row">
-        <div class="d-grid col-sm-12">
+        <div className="d-grid col-12">
           <button
-            class="btn btn-lg btn-primary"
+            ref={createButton}
+            className="btn btn-lg btn-primary"
             type="button"
             onClick={(e) => {
               e.preventDefault();
@@ -34,7 +57,7 @@ function TaskForm({ addTask, taskTitle, time }) {
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 const mapStateToProps = (state) => {
