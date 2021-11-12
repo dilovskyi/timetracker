@@ -4,8 +4,13 @@ function TaskItem({ title, time }) {
   return (
     <>
       <li className="list-group-item d-flex justify-content-between">
-        <div>{title}</div>
-        <span className="badge bg-secondary align-middle">{time}</span>
+        <div role="list-item__title">{title}</div>
+        <span
+          className="badge bg-secondary align-middle"
+          role="list-item__time"
+        >
+          {time}
+        </span>
       </li>
     </>
   );

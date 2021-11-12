@@ -9,7 +9,7 @@ const StyledTitle = styled.h1`
 `;
 
 function Title() {
-  return <StyledTitle>{HEADER_TITLE}</StyledTitle>;
+  return <StyledTitle role="main-title">{HEADER_TITLE}</StyledTitle>;
 }
 
 export default Title;
