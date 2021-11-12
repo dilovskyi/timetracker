@@ -20,7 +20,7 @@ function TaskForm({ addTask, taskTitle, time }) {
   };
 
   return (
-    <form className="row g-3 needs-validation" onKeyPress={pressedInput}>
+    <form className=" needs-validation" onKeyPress={pressedInput}>
       <div className="row">
         <div className="col-12 col-lg-6">
           <div className="input-group mb-3 input-group-lg">
@@ -38,7 +38,7 @@ function TaskForm({ addTask, taskTitle, time }) {
         <div className="d-grid col-12">
           <button
             ref={createButton}
-            className="btn btn-lg btn-primary"
+            className="btn btn-lg btn-success"
             type="button"
             onClick={(e) => {
               e.preventDefault();

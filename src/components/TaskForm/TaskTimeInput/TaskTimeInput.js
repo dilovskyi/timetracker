@@ -36,7 +36,7 @@ function TaskTimeInput({
         onBlur={() => setInputFocusStatus(false)}
         value={hours + ":" + minutes + ":" + seconds}
         type="text"
-        className="form-control"
+        className="form-control col-12 col-lg-6"
         placeholder="Set time"
         aria-label="Time"
         onChange={(e) => {
@@ -46,7 +46,7 @@ function TaskTimeInput({
       />
 
       <button
-        className="btn btn-primary"
+        className="btn btn-secondary col-12 col-lg-6"
         type="button"
         onClick={() => {
           setCurrentTime();

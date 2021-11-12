@@ -3,8 +3,9 @@ import { HEADER_TITLE } from "../../constants";
 
 const StyledTitle = styled.h1`
   text-align: center;
-  color: #e63946;
-  margin: 20px auto;
+  color: green;
+  margin: 30px auto 50px;
+  font-weight: 600;
 `;
 
 function Title() {

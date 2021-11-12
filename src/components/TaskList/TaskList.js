@@ -6,11 +6,11 @@ import styled from "styled-components";
 
 const StyledTaskList = styled.ul`
   border-radius: 5px;
-  margin: 10px;
+  margin: 15px 0;
 `;
 
 const StyledAlert = styled.div`
-  margin-bottom: 7px;
+  margin: 0;
 `;
 
 function TaskList({ taskList, setListDataFromStorage }) {
@@ -30,7 +30,7 @@ function TaskList({ taskList, setListDataFromStorage }) {
     <>
       <StyledTaskList className="list-group ">
         {taskList.length === 0 ? (
-          <StyledAlert className="alert alert-primary" role="alert">
+          <StyledAlert className="alert alert-success" role="alert">
             You have not any task!
           </StyledAlert>
         ) : (

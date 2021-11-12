@@ -10,12 +10,12 @@ function TaskTitleInput({ value, setTaskTitle, resetTaskTitle, titleRef }) {
         autoFocus
         value={value}
         type="text"
-        className="form-control"
+        className="form-control col-12 col-lg-6"
         placeholder="Set your task tittle"
         onChange={(e) => setTaskTitle(e.target.value)}
       />
       <button
-        className="btn btn-primary"
+        className="btn btn-secondary col-12 col-lg-6"
         type="button"
         onClick={resetTaskTitle}
       >

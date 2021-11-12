@@ -8,6 +8,9 @@ const StyledApp = styled.div`
   text-align: center;
   padding: 40px 0;
   height: 100%;
+  @media (max-width: 991px) {
+    padding: 0;
+  }
 `;
 
 function App() {
