@@ -15,7 +15,7 @@ export const timeTick = () => {
 };
 
 export const setUserTime = (itemName, value) => {
-  const [hours, minutes, seconds] = value.split(":");
+  const [hours, minutes, seconds] = value;
   return {
     type: "SET_USER_TIME",
     newTime: {

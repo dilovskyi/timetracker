@@ -14,7 +14,7 @@ function TaskTimeInput({
 }) {
   const [inputFocusStatus, setInputFocusStatus] = useState(false);
   const [valueChangedStatus, setValueChangedStatus] = useState(false);
-  const [loop, setLoop] = useState();
+  const [loop, setLoop] = useState(null);
 
   useEffect(() => {
     if (inputFocusStatus) {
@@ -40,7 +40,18 @@ function TaskTimeInput({
         placeholder="Set time"
         aria-label="Time"
         onChange={(e) => {
-          setUserTime(itemName, e.target.value);
+          const value = e.target.value.split(":");
+
+          const newVal = value.map((item) => {
+            if (item.length >= 3) {
+              return item.slice(0, 2);
+            } else if (!item) {
+              return "0";
+            }
+            return item;
+          });
+
+          setUserTime(itemName, newVal);
           setValueChangedStatus(true);
         }}
       />
