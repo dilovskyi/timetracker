@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Layout from "../hoc/Layout";
 import Title from "./Title/Title";
-import TaskForm from "./TaskForm/TaskForm";
+import TaskTitleInput from "./TaskTitleInput/TaskTitleInput";
 import TaskList from "./TaskList/TaskList";
 
 const StyledApp = styled.div`
@@ -18,7 +18,7 @@ function App() {
     <StyledApp>
       <Layout>
         <Title />
-        <TaskForm />
+        <TaskTitleInput />
         <TaskList />
       </Layout>
     </StyledApp>
