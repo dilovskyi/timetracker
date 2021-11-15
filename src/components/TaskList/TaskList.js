@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import TaskItem from "./TaskItem/TaskItem";
+import ListItem from "./ListItem/ListItem";
 import { connect } from "react-redux";
 import { setListDataFromStorage } from "../../redux/actions/taskList";
 import styled from "styled-components";
@@ -34,8 +34,8 @@ function TaskList({ taskList, setListDataFromStorage }) {
             You have not any task!
           </StyledAlert>
         ) : (
-          taskList.map(({ title, time }, index) => {
-            return <TaskItem title={title} time={time} key={title + index} />;
+          taskList.map(({ title, time, id }) => {
+            return <ListItem title={title} time={time} id={id} key={id} />;
           })
         )}
       </StyledTaskList>

@@ -1,10 +1,10 @@
-import TaskItem from "./TaskItem";
+import ListItem from "./ListItem";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
 describe("TaskItem", () => {
   it("with title", () => {
-    render(<TaskItem title={"Lorem"} />);
+    render(<ListItem title={"Lorem"} />);
 
     expect(screen.getByRole("list-item__title")).toBeInTheDocument();
     expect(screen.getByText("Lorem")).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe("TaskItem", () => {
   });
 
   it("with time", () => {
-    render(<TaskItem time={"00:00:00"} />);
+    render(<ListItem time={"00:00:00"} />);
 
     expect(screen.getByRole("list-item__time")).toBeInTheDocument();
     expect(screen.getByText("00:00:00")).toBeInTheDocument();

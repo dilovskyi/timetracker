@@ -7,14 +7,14 @@ function TaskTitleInput({ value, setTaskTitle, resetTaskTitle, addTask }) {
   const pressedInput = (e) => {
     if (e.target && e.charCode === 13) {
       e.preventDefault();
-      addTask(value);
+      addTask(value, new Date().getTime());
       resetTaskTitle();
     }
   };
 
   return (
     <>
-      <div class="form-floating">
+      <div className="form-floating">
         <textarea
           id="floatingTextarea"
           className="form-control col-12"
@@ -24,7 +24,7 @@ function TaskTitleInput({ value, setTaskTitle, resetTaskTitle, addTask }) {
           onKeyPress={pressedInput}
           onChange={(e) => setTaskTitle(e.target.value)}
         ></textarea>
-        <label for="floatingTextarea">Comments</label>
+        <label htmlFor="floatingTextarea">Comments</label>
       </div>
     </>
   );
