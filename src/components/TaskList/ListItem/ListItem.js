@@ -13,14 +13,10 @@ const StyleTimeInput = styled.input`
 
 function ListItem({ title, time, id, setConfigutableStatus, setUserTime }) {
   const { hours, minutes, configurable } = time;
-  const [configStatus, setConfigStatus] = useState(time.configurable);
 
   useEffect(() => {
     if (configurable) {
-      setTimeout(() => {
-        setConfigutableStatus(id, false);
-        setConfigStatus(false);
-      }, 60000);
+      setConfigutableStatus(id, false);
     }
   }, []);
 
@@ -34,7 +30,7 @@ function ListItem({ title, time, id, setConfigutableStatus, setUserTime }) {
       <li className="list-group-item d-flex justify-content-between">
         <div role="list-item__title">{title}</div>
         <StyleTimeInput
-          disabled={!configStatus}
+          disabled={!configurable}
           type="time"
           value={`${hours}:${minutes}`}
           onChange={setUserTimeHandler}

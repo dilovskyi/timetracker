@@ -18,12 +18,14 @@ export const addTask = (title, id) => {
   };
 };
 
-export const setConfigutableStatus = (listItemId, flag) => {
-  return {
-    type: "SET_CONFIGURABLE_STATUS",
-    listItemId,
-    configurable: flag,
-  };
+export const setConfigutableStatus = (listItemId, flag) => (dispatch) => {
+  setTimeout(() => {
+    dispatch({
+      type: "SET_CONFIGURABLE_STATUS",
+      listItemId,
+      configurable: flag,
+    });
+  }, 6000);
 };
 
 export const setUserTime = (listItemId, value) => {
