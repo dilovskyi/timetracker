@@ -1,12 +1,7 @@
-import { taskTimeAreaInitialState } from "../initialState";
+export const timeLabelInitialState = "";
 
-const taskTimeAreaReducer = (state = taskTimeAreaInitialState, action) => {
+const timeLabelReducer = (state = timeLabelInitialState, action) => {
   switch (action.type) {
-    case "TIME_TICK":
-      return {
-        ...state,
-        ...action.newTime,
-      };
     case "SET_USER_TIME":
       return {
         ...state,
@@ -22,4 +17,4 @@ const taskTimeAreaReducer = (state = taskTimeAreaInitialState, action) => {
   }
 };
 
-export default taskTimeAreaReducer;
+export default timeLabelReducer;

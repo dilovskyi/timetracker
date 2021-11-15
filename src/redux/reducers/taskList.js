@@ -1,4 +1,4 @@
-import { taskListInitialState } from "../initialState";
+const taskListInitialState = [];
 
 const taskListReducer = (state = taskListInitialState, action) => {
   switch (action.type) {

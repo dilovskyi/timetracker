@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../../redux/actions/taskTimeInput";
+import * as actions from "../../redux/actions/timeLabel";
 
 function TaskTimeInput({
   itemName,
   hours,
   minutes,
   seconds,
-  timeTick,
   setUserTime,
   setCurrentTime,
   timeRef,
@@ -15,18 +14,6 @@ function TaskTimeInput({
   const [inputFocusStatus, setInputFocusStatus] = useState(false);
   const [valueChangedStatus, setValueChangedStatus] = useState(false);
   const [loop, setLoop] = useState(null);
-
-  useEffect(() => {
-    if (inputFocusStatus) {
-      clearInterval(loop);
-    } else if (!valueChangedStatus) {
-      setLoop(setInterval(timeTick, 1000));
-    }
-  }, [inputFocusStatus, valueChangedStatus]);
-
-  useEffect(() => {
-    return () => clearInterval(loop);
-  }, []);
 
   return (
     <>

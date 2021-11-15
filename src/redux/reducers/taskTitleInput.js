@@ -1,4 +1,6 @@
-import { taskTitleInputInitialState } from "../initialState";
+export const taskTitleInputInitialState = {
+  value: "",
+};
 
 const taskTitleInputReducer = (state = taskTitleInputInitialState, action) => {
   switch (action.type) {
