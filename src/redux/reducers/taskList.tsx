@@ -1,6 +1,9 @@
-const taskListInitialState = [];
+import { taskListState } from './taskListTypes/taskListState'
+import {taskListActionType } from './taskListTypes/taskListAction'
 
-const taskListReducer = (state = taskListInitialState, action) => {
+const taskListInitialState: taskListState = [];
+
+const taskListReducer = (state = taskListInitialState, action: taskListActionType): taskListState => {
   switch (action.type) {
     case "ADD_TASK":
       return [action.newTask, ...state];
