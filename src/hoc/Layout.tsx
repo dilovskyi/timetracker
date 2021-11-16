@@ -11,7 +11,7 @@ const StyledLayout = styled.div`
 `;
 
 interface AuxProps {
-  children: React.ReactChild | React.ReactChildren;
+  children: React.ReactNode;
 }
 
 function Layout({ children }: AuxProps) {
