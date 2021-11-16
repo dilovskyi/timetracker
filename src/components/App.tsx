@@ -17,6 +17,7 @@ function App() {
   return (
     <StyledApp>
       <Layout>
+        <div></div>
         <Title />
         <TaskTitleInput />
         <TaskList />

@@ -1,13 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/taskTitleInput";
 import { addTask } from "../../redux/actions/taskList";
+import {StateType} from '../../redux/storeTypes'
 
-function TaskTitleInput({ value, setTaskTitle, resetTaskTitle, addTask }) {
-  const pressedInput = (e) => {
+interface StateProps {
+  value: string,
+}
+
+interface DispatchProps {
+  setTaskTitle: (value: string) => void,
+  resetTaskTitle: () => void,
+  addTask: (title:string,id:string) => void,
+}
+
+type Props = StateProps & DispatchProps
+
+function TaskTitleInput ({ value, setTaskTitle, resetTaskTitle, addTask }:Props):JSX.Element {
+  const pressedInput = (e: React.KeyboardEvent<HTMLTextAreaElement>):void => {
     if (e.target && e.charCode === 13) {
       e.preventDefault();
-      addTask(value, new Date().getTime());
+      addTask(value, new Date().getTime().toString());
       resetTaskTitle();
     }
   };
@@ -30,8 +43,8 @@ function TaskTitleInput({ value, setTaskTitle, resetTaskTitle, addTask }) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return { ...state.taskTitleInput, ownProps };
+const mapStateToProps = (state:StateType) => {
+  return { ...state.taskTitleInput};
 };
 
 const mapDispatchToProps = {
