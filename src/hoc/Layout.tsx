@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const StyledLayout = styled.div`
@@ -11,7 +10,11 @@ const StyledLayout = styled.div`
   }
 `;
 
-function Layout({ children }) {
+interface AuxProps {
+  children: React.ReactChild | React.ReactChildren;
+}
+
+function Layout({ children }: AuxProps) {
   return (
     <>
       <StyledLayout className="container">{children}</StyledLayout>
