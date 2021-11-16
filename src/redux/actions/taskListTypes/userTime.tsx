@@ -1,0 +1,1 @@
+export type userTime = Array<string | number>
