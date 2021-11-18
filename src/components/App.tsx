@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import styled from "styled-components";
 import Layout from "../hoc/Layout";
 import Title from "./Title/Title";
@@ -13,14 +14,37 @@ const StyledApp = styled.div`
   }
 `;
 
+export const UserBrowserContext = createContext("");
+
 function App() {
+  function fnBrowserDetect() {
+    let userAgent = navigator.userAgent;
+    let browserName;
+
+    if (userAgent.match(/chrome|chromium|crios/i)) {
+      browserName = "chrome";
+    } else if (userAgent.match(/firefox|fxios/i)) {
+      browserName = "firefox";
+    } else if (userAgent.match(/safari/i)) {
+      browserName = "safari";
+    } else if (userAgent.match(/opr\//i)) {
+      browserName = "opera";
+    } else if (userAgent.match(/edg/i)) {
+      browserName = "edge";
+    } else {
+      browserName = "No browser detection";
+    }
+    return browserName;
+  }
+
   return (
     <StyledApp>
       <Layout>
-        <div></div>
-        <Title />
-        <TaskTitleInput />
-        <TaskList />
+        <UserBrowserContext.Provider value={fnBrowserDetect()}>
+          <Title />
+          <TaskTitleInput />
+          <TaskList />
+        </UserBrowserContext.Provider>
       </Layout>
     </StyledApp>
   );
