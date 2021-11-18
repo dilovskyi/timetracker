@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import {
@@ -6,9 +6,11 @@ import {
   setConfigutableStatus,
 } from "../../../redux/actions/taskList";
 
+import { UserBrowserContext } from "../../App";
+
 import TimeSetModal from "../../TimeSetModal/TimeSetModal";
 
-const StyledTimeInput = styled.input`
+const StyledInput = styled.input`
   max-width: 100px;
   border-radius: 5px;
   position: relative;
@@ -71,27 +73,42 @@ function ListItem({
   };
 
   const { hours, minutes, configurable } = time;
+  const userBrowser = useContext(UserBrowserContext);
   return (
     <>
-      <li className="list-group-item ">
+      <li className="list-group-item d-flex  align-items-center justify-content-between">
         <div className="list-item__title">{title}</div>
-        <StyledTimeInput
-          disabled={!configurable}
-          type="time"
-          value={withZero(hours) + ":" + withZero(minutes)}
-          onChange={setUserTimeHandler}
-          onClick={openModal}
-        />
 
-        {/* TODO: Render if not a chrome */}
-        <CurrentTimeContext.Provider value={[hours, minutes]}>
-          <CurrentIdContext.Provider value={id}>
-            <TimeSetModal
-              displayStatus={displayStatus}
-              closeModalHandler={closeModal}
-            />
-          </CurrentIdContext.Provider>
-        </CurrentTimeContext.Provider>
+        <div className="d-flex align-items-center flex-column">
+          <CurrentTimeContext.Provider value={[hours, minutes]}>
+            <CurrentIdContext.Provider value={id}>
+              <StyledInput
+                disabled={!configurable}
+                type="time"
+                value={withZero(hours) + ":" + withZero(minutes)}
+                onChange={setUserTimeHandler}
+              />
+
+              {userBrowser !== "chrome" && (
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-sm mt-2"
+                  onClick={openModal}
+                  disabled={!configurable}>
+                  Set Time
+                </button>
+              )}
+
+              {displayStatus ? (
+                <TimeSetModal
+                  displayStatus={displayStatus}
+                  closeModalHandler={closeModal}
+                  value={withZero(hours) + ":" + withZero(minutes)}
+                />
+              ) : null}
+            </CurrentIdContext.Provider>
+          </CurrentTimeContext.Provider>
+        </div>
       </li>
     </>
   );
