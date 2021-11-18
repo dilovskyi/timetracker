@@ -3,7 +3,7 @@ import ListItem from "./ListItem/ListItem";
 import { connect } from "react-redux";
 import { setListDataFromStorage } from "../../redux/actions/taskList";
 import styled from "styled-components";
-import {StateType} from '../../redux/storeTypes'
+import { StateType } from "../../redux/storeTypes";
 
 const StyledTaskList = styled.ul`
   border-radius: 5px;
@@ -15,28 +15,30 @@ const StyledAlert = styled.div`
 `;
 
 interface taskItem {
-  title: string,
-  id: string,
+  title: string;
+  id: string;
   time: {
-    hours:string | number, minutes: string | number, configurable: boolean
-  }
+    hours: string | number;
+    minutes: string | number;
+    configurable: boolean;
+  };
 }
 
-type taskList = Array<taskItem> | []
- 
+type taskList = Array<taskItem> | [];
+
 interface StateProps {
-  taskList: taskList
+  taskList: taskList;
 }
 
 interface DispatchProps {
-  setListDataFromStorage: (storageList: taskList) => void,
+  setListDataFromStorage: (storageList: taskList) => void;
 }
 
-type Props = StateProps & DispatchProps
+type Props = StateProps & DispatchProps;
 
 function TaskList({ taskList, setListDataFromStorage }: Props) {
   useEffect(() => {
-    let jsonFromStorage: string | null = window.localStorage.getItem("tasks")
+    let jsonFromStorage: string | null = window.localStorage.getItem("tasks");
     if (jsonFromStorage && jsonFromStorage.length) {
       let storageList = JSON.parse(jsonFromStorage);
       setListDataFromStorage(storageList);
